@@ -1,0 +1,138 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*
+   src/styles.css (i.e. your global style)
+*/
+
+.no-data-available {
+  text-align: center;
+}
+
+body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.register-modal label {
+  display: block;
+}
+
+.dataTables_empty {
+  display: none;
+}
+
+input[type='button'] {
+  margin: 4px 2px;
+  font-size: 12px;
+  padding: 2px 6px;
+}
+
+.greenclr {
+  border-color: #5cc3af;
+  color: #fff;
+  background-color: #5cc3af;
+  transition: 0.3s;
+  margin-bottom: 10px;
+}
+
+.greenclr:hover,
+.greenclr:focus,
+.greenclr:active {
+  box-shadow: none;
+  background-color: #fff;
+  outline: none;
+  color: #5cc3af;
+  border-color: #5cc3af;
+}
+
+.toast-container {
+  margin-top: 50px;
+}
+
+.registerform,
+.loginform {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.centered {
+  text-align: center;
+}
+
+.modal-delete {
+  top: 300px;
+}
+
+.delete-body {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.delete-body p {
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 24px;
+  /* margin: 0; */
+  text-align: left;
+  padding: 15px;
+}
+
+.delete {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.delete:hover {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+
+.cancel {
+  color: #333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+
+.cancel:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.cancel:focus,
+.delete:focus {
+  outline: none;
+}
+
+/* profile page */
+
+.userpropic {
+  display: block;
+}
+
+.headerpic>img,
+.userpropic>img {
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.headerpic {
+  width: 38px;
+  height: 38px;
+  background-color: #fff;
+  border: none;
+  margin: 6px auto;
+  border-radius: 50%;
+}
+
+.uname {
+  text-align: center;
+}
+
+.uname label {
+  font-size: 21px;
+  text-transform: capitalize;
+}

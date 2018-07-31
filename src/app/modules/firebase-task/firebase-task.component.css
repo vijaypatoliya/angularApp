@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* table style */
+.dataTables_wrapper .dataTables_length{display: none !important;}
+.edit{cursor: pointer;float: right;margin-right: 15px;opacity: 0.5;margin-top: 2px;}
+.edit:hover{opacity: 1;}
+
+
+/* task done toggle style */
+span.done,span.checked{position: relative;cursor: pointer;}
+span.done::after{
+	content: '';position: absolute;border: 1px #d9d9d9 solid;border-radius: 50%;height: 25px;width: 25px;left: 5px;top: 5px;
+}
+span.checked {color: #d9d9d9;text-decoration: line-through;}
+span.checked::after{border-color: #5cc3af;}
+span.checked::before {
+	content: '';position: absolute;border-color: #5cc3af;border-style: solid;border-width: 0 2px 2px 0;top: 9px; left: 14px;transform: rotate(45deg);height: 15px;width: 7px;
+}
+
+/* modal style */
+.greenclr{border-color: #5cc3af;color: #fff; background-color: #5cc3af;transition: 0.3s;}
+.greenclr:hover{background-color: #fff; color: #5cc3af; border-color: #5cc3af;}

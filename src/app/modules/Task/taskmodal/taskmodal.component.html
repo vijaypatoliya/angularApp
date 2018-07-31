@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <span class='title' *ngIf='update == false'>Create new</span>
+  <span class='title' *ngIf='update == true'>Update task</span>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+		<div class="form-group">
+			<label for="title">Title</label> <input type="text"
+				class="form-control" id="title" required #title="ngModel" required [(ngModel)]="task.taskName"
+				name="title">
+		</div>
+
+		<div class="form-group">
+			<label for="content">Content</label> <input type="text"
+				class="form-control" id="content" #content="ngModel" required [(ngModel)]="task.content"
+				name="content">
+		</div>
+
+    <button type="submit" *ngIf='update == false' (click)="save(task);bsModalRef.hide();" class="btn greenclr">save</button>
+    <button type="submit" *ngIf='update == true' (click)="updateActive(task);bsModalRef.hide();" class="btn greenclr">save</button>
+	</form>
+</div>

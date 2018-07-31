@@ -1,0 +1,66 @@
+<div class="modal-header">
+  <span class='title'>Update User Details</span>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body register-modal">
+  <form>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="fullname">Fullname</label>
+          <input type="text" class="form-control" id="fullname" #fullname="ngModel" [(ngModel)]="user.fullname" name="fullname" required>
+        </div>
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" #username="ngModel" [(ngModel)]="user.username" name="username" required>
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" class="form-control" id="company" #company="ngModel" [(ngModel)]="user.company" name="company">
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address" #address="ngModel" [(ngModel)]="user.address" name="address">
+        </div>
+
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" class="form-control" id="city" #city="ngModel" [(ngModel)]="user.city" name="city">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="zip">Zip</label>
+          <input type="text" class="form-control" id="zip" #zip="ngModel" [(ngModel)]="user.zip" name="zip">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="email" #email="ngModel" required [(ngModel)]="user.email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" class="form-control" id="phone" #phone="ngModel" required [(ngModel)]="user.phone" name="phone">
+        </div>
+
+        <div class="form-group">
+          <label for="moreInfo">More Info</label>
+          <input type="text" class="form-control" id="moreInfo" #moreInfo="ngModel" required [(ngModel)]="user.moreInfo" name="moreInfo"
+            required>
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <ui-switch [checked]='user.status' id='status' name='status' [(ngModel)]='user.status' size='small'></ui-switch>
+        </div>
+
+      </div>
+    </div>
+    <button type="submit" (click)="update(); bsModalRef.hide();" class="btn greenclr">Update</button>
+  </form>
+</div>

@@ -1,0 +1,81 @@
+a:hover, a:focus{
+  text-decoration: none;
+}
+.profile-row .col-md-4 span {
+    display: block;
+    padding: 15px 10px;
+}
+
+.inline-input input {
+    height: 40px;
+    margin: 5px 0;
+    padding: 0 10px;
+    background: #f2f3f5;
+    width: 100%;
+    border: none;
+}
+
+.profile-row {
+    border-bottom: 1px solid #f1f1f1;
+    padding: 0;
+    color: #868686;
+}
+
+.profile-row .col-md-8 span {
+    line-height: 50px;
+    padding: 15px 10px;
+}
+
+.action-btns button, .btn-add {
+    height: 40px;
+    width: 40px;
+    margin: 5px 0;
+}
+
+.action-btns button i {
+    font-size: 18px;
+    color: lightgrey;
+}
+
+.action-btns button:hover i {
+    color: grey;
+}
+
+.btn-add {
+    float: right;
+}
+
+.proPicWraper {
+    overflow: hidden;
+    margin: 0 auto 10px 0px;
+    position: relative;
+    border: 3px solid #d2d6de;
+    border-radius: 15%;
+    vertical-align: middle;
+    width: 200px;
+    height: 200px;
+  }
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 14px;
+    opacity: 1;
+    color: #000000;
+    text-shadow: none;
+    line-height: 0 !important;
+    padding: 15px 2px 0 0 !important;
+}
+
+.selectPic {
+    margin-top: 45px;
+    text-align: left;
+}
+
+.selectPic label {
+    font-size: 14px;
+}
+
+.selectPic .btn-s {
+    margin-top: 20px;
+}

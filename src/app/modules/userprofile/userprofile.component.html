@@ -1,0 +1,294 @@
+<div class="panel-body profile-panel-body">
+  <h3>User Profile</h3>
+  <form name="form" (ngSubmit)="update()" enctype="multipart/form-data" role="form" autocomlete="off">
+    <div class="row profile-row">
+      <div class="col-md-4 col-sm-4 col-xs-5">
+        <div class='proPicWraper userpropic'>
+          <img alt="Poster" id="poster" class="" [src]='user.uploadImgName'>
+          <span class='close' *ngIf='user.uploadImgName != "http://localhost:8000/profilePhotos/test-img.png"' (click)='deleteProfile(user)'>×</span>
+        </div>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-7">
+        <div class="form-group uname">
+          <div class='selectPic'>
+            <input type="file" name="avatar" ng2FileSelect [uploader]="uploader" />
+            <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+              upload
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row profile-row">
+      <div class="col-md-4 col-sm-4 col-xs-5">
+        <span>Full name</span>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-7">
+        <span *ngIf="!iFullname">
+          <a ngInit="iFullname = false;" (click)="iFullname = true">{{user.fullname}}</a>
+        </span>
+        <button type="button" *ngIf="!iFullname && !user.fullname" (click)="iFullname = true" class="btn-add">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <div class="inline-input" *ngIf="iFullname">
+          <div class="col-sm-10">
+            <input type="text" name="fullname" #fullname="ngModel" [(ngModel)]="user.fullname" placeholder="Full Name">
+          </div>
+          <div class="col-sm-2 action-btns">
+            <div class="row">
+              <button type="submit" class="btn-update">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </button>
+              <button type="button" (click)="iFullname = false;" class="btn-close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="clearfix"></span>
+    </div>
+
+    <div class="row profile-row">
+      <div class="col-md-4 col-sm-4 col-xs-5">
+        <span>Username</span>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-7">
+        <span *ngIf="!iUsername">
+          <a ngInit='iUsername = false' (click)="iUsername = true">{{user.username}}</a>
+        </span>
+        <button type="button" *ngIf="!iUsername && !user.username" (click)="iUsername = true" class="btn-add">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <div class="inline-input" *ngIf="iUsername">
+          <div class="col-sm-10">
+            <input type="text" name="username" #username="ngModel" [(ngModel)]="user.username" placeholder="Username">
+          </div>
+          <div class="col-sm-2 action-btns">
+            <div class="row">
+              <button type="submit" class="btn-update">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </button>
+              <button type="button" (click)="iUsername = false" class="btn-close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="clearfix"></span>
+    </div>
+
+    <div class="row profile-row">
+      <div class="col-md-4 col-sm-4 col-xs-5">
+        <span>Email</span>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-7">
+        <span *ngIf="!iEmail">
+          <a ngInit="iEmail = false;" (click)="iEmail = true">{{user.email}}</a>
+        </span>
+        <button type="button" *ngIf="!iEmail && !user.email" (click)="iEmail = true" class="btn-add">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <div class="inline-input" *ngIf="iEmail">
+          <div class="col-sm-10">
+            <input type="text" name="email" #email="ngModel" [(ngModel)]="user.email" placeholder="Email">
+          </div>
+          <div class="col-sm-2 action-btns">
+            <div class="row">
+              <button type="submit" class="btn-update">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </button>
+              <button type="button" (click)="iEmail = false" class="btn-close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="clearfix"></span>
+    </div>
+
+    <div class="row profile-row">
+      <div class="col-md-4 col-sm-4 col-xs-5">
+        <span>More Info</span>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-7">
+        <span *ngIf="!iMoreInfo">
+          <a ngInit="iMoreInfo = false" (click)="iMoreInfo = true">{{user.moreInfo}}</a>
+        </span>
+        <button type="button" *ngIf="!iMoreInfo && !user.moreInfo" (click)="iMoreInfo = true" class="btn-add">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <div class="inline-input" *ngIf="iMoreInfo">
+          <div class="col-sm-10">
+            <input type="text" name="moreInfo" #moreInfo="ngModel" [(ngModel)]="user.moreInfo" placeholder="Skype">
+          </div>
+          <div class="col-sm-2 action-btns">
+            <div class="row">
+              <button type="submit" class="btn-update">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </button>
+              <button type="button" (click)="iMoreInfo = false" class="btn-close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="clearfix"></span>
+    </div>
+
+    <div class="row profile-row">
+      <div class="col-md-4 col-sm-4 col-xs-5">
+        <span>Phone</span>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-7">
+        <span *ngIf="!iPhone">
+          <a ngInit="iPhone = false" (click)="iPhone = true">{{user.phone}}</a>
+        </span>
+        <button type="button" *ngIf="!iPhone && !user.phone" (click)="iPhone = true" class="btn-add">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <div class="inline-input" *ngIf="iPhone">
+          <div class="col-sm-10">
+            <input type="text" name="phone" #phone="ngModel" [(ngModel)]="user.phone" placeholder="phone">
+          </div>
+          <div class="col-sm-2 action-btns">
+            <div class="row">
+              <button type="submit" class="btn-update">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </button>
+              <button type="button" (click)="iPhone = false" class="btn-close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="clearfix"></span>
+    </div>
+
+    <div class="row profile-row">
+      <div class="col-md-4 col-sm-4 col-xs-5">
+        <span>Address</span>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-7">
+        <span *ngIf="!iAddress">
+          <a ngInit="iAddress = false;" (click)="iAddress = true">{{user.address}}</a>
+        </span>
+        <button type="button" *ngIf="!iAddress && !user.address" (click)="iAddress = true" class="btn-add">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <div class="inline-input" *ngIf="iAddress">
+          <div class="col-sm-10">
+            <input type="text" name="address" #address="ngModel" [(ngModel)]="user.address" placeholder="address">
+          </div>
+          <div class="col-sm-2 action-btns">
+            <div class="row">
+              <button type="submit" class="btn-update">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </button>
+              <button type="button" (click)="iAddress = false" class="btn-close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="clearfix"></span>
+    </div>
+
+    <div class="row profile-row">
+      <div class="col-md-4 col-sm-4 col-xs-5">
+        <span>Zip</span>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-7">
+        <span *ngIf="!iZip">
+          <a ngInit="iZip = false;" (click)="iZip = true">{{user.zip}}</a>
+        </span>
+        <button type="button" *ngIf="!iZip && !user.zip" (click)="iZip = true" class="btn-add">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <div class="inline-input" *ngIf="iZip">
+          <div class="col-sm-10">
+            <input type="text" name="zip" #zip="ngModel" [(ngModel)]="user.zip" placeholder="zip">
+          </div>
+          <div class="col-sm-2 action-btns">
+            <div class="row">
+              <button type="submit" class="btn-update">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </button>
+              <button type="button" (click)="iZip = false" class="btn-close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="clearfix"></span>
+    </div>
+
+    <div class="row profile-row">
+      <div class="col-md-4 col-sm-4 col-xs-5">
+        <span>City</span>
+      </div>
+      <div class="col-md-8 col-sm-8 col-xs-7">
+        <span *ngIf="!iCity">
+          <a ngInit="iCity = false;" (click)="iCity = true">{{user.city}}</a>
+        </span>
+        <button type="button" *ngIf="!iCity && !user.city" (click)="iCity = true" class="btn-add">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <div class="inline-input" *ngIf="iCity">
+          <div class="col-sm-10">
+            <input type="text" name="city" #city="ngModel" [(ngModel)]="user.city" placeholder="city">
+          </div>
+          <div class="col-sm-2 action-btns">
+            <div class="row">
+              <button type="submit" class="btn-update">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </button>
+              <button type="button" (click)="iCity = false" class="btn-close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="clearfix"></span>
+    </div>
+
+    <div class="row profile-row">
+        <div class="col-md-4 col-sm-4 col-xs-5">
+          <span>Password</span>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-7">
+          <span *ngIf="!iPassword">
+            <a ngInit="iPassword = false;" (click)="iPassword = true">*********</a>
+          </span>
+          <button type="button" *ngIf="!iPassword && !user.passwordClear" (click)="iPassword = true" class="btn-add">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+          <div class="inline-input" *ngIf="iPassword">
+            <div class="col-sm-10">
+              <input type="password" name="passwordClear" #passwordClear="ngModel" [(ngModel)]="user.passwordClear" placeholder="password">
+            </div>
+            <div class="col-sm-2 action-btns">
+              <div class="row">
+                <button type="submit" class="btn-update">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+                <button type="button" (click)="iPassword = false" class="btn-close">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="clearfix"></span>
+      </div>
+
+  </form>
+</div>
+<!-- end BASIC -->

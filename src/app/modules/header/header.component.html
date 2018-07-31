@@ -1,0 +1,47 @@
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" *ngIf='data.username' [routerLink]="['home']">Angular App</a>
+      <a class="navbar-brand" *ngIf='!data.username' [routerLink]="['login']">Angular App</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav" *ngIf='data.username'>
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="['task']">Task</a>
+        </li>
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="['firebasetask']">Firebase_Task</a>
+        </li>
+        <li [routerLinkActive]="['active']">
+          <a [routerLink]="['bookstore']">BookStore</a>
+        </li>
+        <li [routerLinkActive]="['active']" *ngIf="data.username == 'admin'">
+          <a [routerLink]="['users']">Manage_Users</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf='data.username'>
+        <li class=dropdown *ngIf='data.uploadImgName'>
+          <img [src]='data.uploadImgName' type="fetch" class='headerpic'>
+        </li>
+        <li class="dropdown">
+          <a [routerLink]="['profile',data._id]">{{data.username}}</a>
+        </li>
+        <li class="dropdown">
+          <a [routerLink]="['login']" id='logout' (click)="logout()">Logout</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf='!data.username'>
+        <li class="dropdown">
+          <a [routerLink]="['register']">Register</a>
+
+        </li>
+        <li class="dropdown">
+          <a [routerLink]="['login']">Log In</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

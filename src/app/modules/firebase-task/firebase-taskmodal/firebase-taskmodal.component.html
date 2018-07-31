@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <span class='title' *ngIf='tasks.key == undefined'>Create new</span>
+  <span class='title' *ngIf='tasks.key != undefined'>Update task</span>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+		<div class="form-group" *ngIf="tasks">
+			<label for="content">Content</label> <input type="text"
+				class="form-control" id="content" required #content="ngModel" required [(ngModel)]="tasks.content"
+				name="content">
+		</div>
+
+		<div class="form-group">
+			<label for="name">Client name</label> <input type="text"
+				class="form-control" id="name" required [(ngModel)]="tasks.clientname"
+				name="name">
+		</div>
+
+    <button type="submit" *ngIf='tasks.key == undefined' (click)="save();bsModalRef.hide();" class="btn greenclr">save</button>
+    <button type="submit" *ngIf='tasks.key != undefined' (click)="updateActive(tasks);bsModalRef.hide();" class="btn greenclr">save</button>
+	</form>
+</div>

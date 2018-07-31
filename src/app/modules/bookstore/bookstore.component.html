@@ -1,0 +1,118 @@
+
+<form>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label for="bid" class="control-label">Book Id:</label>
+        <input type="number" name="bid" class="form-control" id="bid" placeholder='Enter Book Id' #bid="ngModel" [(ngModel)]="book.bookId" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+          required>
+        <span id="errmsg_bid" class="error"></span>
+        <span class="error" id="sameval"></span>
+      </div>
+      <div class="form-group">
+        <label for="bname" class="control-label">Name:</label>
+        <input type="text" name="bname" value="" class="form-control" id="bname" placeholder='Enter Book Name' #bname="ngModel" [(ngModel)]="book.bname" required>
+        <span id="errmsg_bname" class="error"></span>
+      </div>
+      <div class="form-group">
+        <label for="bdesc" class="control-label">Description:</label>
+        <input type="text" name="bdesc" value="" class="form-control" id="bdesc" placeholder='Enter Book Description' #bdesc="ngModel" [(ngModel)]="book.bdescription"
+          required>
+        <span id="arrmsg_bdesc" class="error"></span>
+      </div>
+      <div class="form-group">
+        <label for="bauth" class="control-label">Author Name:</label>
+        <input type="text" name="bauth" value="" class="form-control" id="bauth" placeholder='Enter Book AuthorName' #bauth="ngModel" [(ngModel)]="book.bauthorname"
+          required>
+        <span id="arrmsg_bauth" class="error"></span>
+      </div>
+      <div class="form-group">
+        <label for="bpage" class="control-label">Book Page No:</label>
+        <input type="text" name="bpage" value="" class="form-control" id="bpage" placeholder='Enter Book Pages' #bpage="ngModel" [(ngModel)]="book.bpagenum" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+          required>
+        <span id="arrmsg_bpage" class="error"></span>
+      </div>
+    </div>
+    <div class="col-xs-6">
+
+      <div class="form-group">
+        <label for="bcate" class="control-label">Category:</label>
+        <input type="text" name="bcate" value="" class="form-control" id="bcate" placeholder='Enter Book Category' #bcate="ngModel" [(ngModel)]="book.bcategory" required>
+        <span id="arrmsg_bcate" class="error"></span>
+      </div>
+      <div class="form-group">
+        <label for="brate" class="control-label">Price:</label>
+        <input type="text" name="brate" value="" class="form-control" id="brate" placeholder='Enter Book Price' #brate="ngModel" [(ngModel)]="book.bprice" required>
+        <span id="arrmsg_brate" class="error"></span>
+      </div>
+      <div class="form-group">
+        <label for="byear" class="control-label">Releas Year:</label>
+        <input type="text" name="byear" value="" class="form-control" id="byear" placeholder='Enter Book Releas Year' #byear="ngModel" [(ngModel)]="book.breleasyear"
+          required>
+        <span id="arrmsg_byear" class="error"></span>
+      </div>
+      <div class="form-group">
+        <label for="blang" class="control-label">Language:</label>
+        <input type="text" name="blang" value="" class="form-control" id="blang" placeholder='Enter Book Language' #blang="ngModel" [(ngModel)]="book.bLanguage">
+        <span id="errmsg_blang" class="error"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="button" (click)="addBook(book)" class="btn btn-primary greenclr" value="Add">
+    <input type="button" (click)="show()" class="btn btn-primary greenclr" value="Show">
+    <input type="button" (click)="showbyid(book.bookId)" class="btn btn-primary greenclr" value="Show by id">
+    <input type="button" (click)="showbybookName(book.bname)" class="btn btn-primary greenclr" value="Show by Name">
+    <input type="button" (click)="showbymorethan100(100)" class="btn btn-primary greenclr" value="Show by > 100 pages">
+    <input type="button" (click)="showby2015(2015)" class="btn btn-primary greenclr" value="Show by Released year 2015">
+    <input type="button" (click)="showbyyear(2001,2015)" class="btn btn-primary greenclr" value="Show by Released year 2015 & 2001">
+    <input type="button" (click)="showbypagefilter(25, 90)" class="btn btn-primary greenclr" value="Show by Less than 90 & More than 25 pages">
+    <input type="button" (click)="showbypagefilter(25, 90, 80)" class="btn btn-primary greenclr" value="Show by Less than 90 & More than 25 & but not 80 Pages">
+    <input type="button" (click)="showbooklang()" class="btn btn-primary greenclr" value="Show Book have Language">
+    <input type="button" (click)="showbyzeropg()" class="btn btn-primary greenclr" value="Show by zero Pages">
+    <input type="button" (click)="showhighestPrice()" class="btn btn-primary greenclr" id="shownameonly" value="Show highest price book">
+    <input type="button" (click)="highPriLowPgs()" class="btn btn-primary greenclr" id="shownameonly" value="Show highest price & Low Pages">
+    <input type="button" (click)="updatebyid(book)" class="btn btn-primary greenclr" value="Update by id">
+    <input type="button" (click)="updatebyBookname(book)" class="btn btn-primary greenclr" id="updatebyid" value="Update by Name">
+    <input type="button" (click)="updatebyBookNameAuth(book)" class="btn btn-primary greenclr" value="Update by Author and Name">
+    <input type="button" (click)="deletebyid(book.bookId)" class="btn btn-primary greenclr" value="Delete by id">
+    <input type="button" (click)="deletebyname(book.bname)" class="btn btn-primary greenclr" value="Delete by Name">
+    <input type="button" (click)="deletebyauthor(book.bauthorname)" class="btn btn-primary greenclr" value="Delete by Author">
+    <input type="button" (click)="deletebyauthDesc(book.bauthorname,book.bdescription)" class="btn btn-primary greenclr" value="Delete by Author and Description">
+    <input type="button" (click)="deleteBookbyNameCate(book.bname, book.bcategory)" class="btn btn-primary greenclr" value="Delete by Name and Category">
+  </div>
+</form>
+
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Book Author</th>
+      <th>Page No.</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Releas Year</th>
+      <th>Book Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td>{{ book.bookId }}</td>
+      <td>{{ book.bname }}</td>
+      <td>{{ book.bdescription }}</td>
+      <td>{{ book.bauthorname }}</td>
+      <td>{{ book.bpagenum }}</td>
+      <td>{{ book.bcategory }}</td>
+      <td>{{ book.bprice }}</td>
+      <td>{{ book.breleasyear }}</td>
+      <td>{{ book.bLanguage }}</td>
+    </tr>
+    <tr *ngIf="books?.length == 0">
+      <td colspan="9" class="no-data-available">No data!</td>
+    </tr>
+  </tbody>
+</table>
+

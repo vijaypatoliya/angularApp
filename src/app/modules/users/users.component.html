@@ -1,0 +1,41 @@
+<div class="title">
+  <h2>Users</h2>
+</div>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Fullname</th>
+      <th>Email</th>
+      <th>Status</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.username }}</td>
+      <td>{{ user.fullname }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <p *ngIf='user.status == true'>Active</p>
+        <p *ngIf='user.status == false'>Unapproved</p>
+      </td>
+      <td>
+        <span class='edit' (click)='openTaskModal(user)'>
+          <span class="glyphicon glyphicon-edit"></span>
+        </span>
+        <span class='close' (click)="openModal(template)">×</span>
+        <ng-template #template>
+          <div class="modal-body text-center delete-body">
+            <p>Delete this item?</p>
+            <button type="button" class="btn delete" (click)="confirm(user._id)">Delete</button>
+            <button type="button" class="btn cancel" (click)="decline()">Cancel</button>
+          </div>
+        </ng-template>
+      </td>
+    </tr>
+    <tr *ngIf="users?.length == 0">
+        <td colspan="3" class="no-data-available">No data!</td>
+      </tr>
+  </tbody>
+</table>

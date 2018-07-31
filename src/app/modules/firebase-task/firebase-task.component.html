@@ -1,0 +1,26 @@
+<button type="button" class="btn btn-primary greenclr" (click)="openTaskModal(tasks)">Create Task</button>
+
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Content</th>
+      <th>Client Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks">
+      <td><span class='done' [class.checked]='task.done' (click)='toggleDone(task);'></span></td>
+      <td>{{ task.content }}</td>
+      <td>{{ task.clientname }}</td>
+      <td>
+        <span class='close' (click)='deleteTask(task.key)'>×</span>
+        <span class='edit' (click)='openTaskModal(task)'><span class="glyphicon glyphicon-edit"></span></span>
+      </td>
+    </tr>
+    <tr *ngIf="tasks?.length == 0">
+      <td colspan="4" class="no-data-available">No data!</td>
+    </tr>
+  </tbody>
+  </table>
